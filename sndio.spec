@@ -3,7 +3,7 @@
 %define		major	7.0
 
 Name:		sndio
-Version:	1.5.0
+Version:	1.6.0
 Release:	1
 Summary:	A sound library
 Group:		Sound/Utilities
