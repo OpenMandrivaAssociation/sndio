@@ -71,6 +71,7 @@ Here are the development files for %{name}
 %{_bindir}/aucat
 %{_bindir}/midicat
 %{_bindir}/sndiod
+%{_bindir}/sndioctl
 %{_mandir}/man*/*
 %{_unitdir}/%{name}d.service
 %{_sysconfdir}/default/%{name}d
