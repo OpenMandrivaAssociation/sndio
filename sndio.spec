@@ -1,9 +1,9 @@
 %define		libname %mklibname sndio %{major}
 %define		devel	%mklibname sndio -d
-%define		major	7.0
+%define		major	7.1
 
 Name:		sndio
-Version:	1.6.0
+Version:	1.7.0
 Release:	1
 Summary:	A sound library
 Group:		Sound/Utilities
@@ -71,6 +71,7 @@ Here are the development files for %{name}
 %{_bindir}/aucat
 %{_bindir}/midicat
 %{_bindir}/sndiod
+%{_bindir}/sndioctl
 %{_mandir}/man*/*
 %{_unitdir}/%{name}d.service
 %{_sysconfdir}/default/%{name}d
