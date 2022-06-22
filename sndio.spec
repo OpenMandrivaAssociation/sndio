@@ -4,7 +4,7 @@
 
 Name:		sndio
 Version:	1.7.0
-Release:	1
+Release:	2
 Summary:	A sound library
 Group:		Sound/Utilities
 
