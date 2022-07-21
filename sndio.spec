@@ -13,6 +13,7 @@ URL:		http://www.sndio.org
 Source0:	http://www.sndio.org/%{name}-%{version}.tar.gz
 
 BuildRequires:	pkgconfig(alsa)
+BuildRequires:  pkgconfig(libbsd)
 Requires(post):	rpm-helper
 Requires(preun):	rpm-helper
 Requires:	%{libname} = %{version}-%{release}
@@ -54,24 +55,16 @@ Here are the development files for %{name}
 %__install -Dm 644 contrib/default.%{name}d %{buildroot}%{_sysconfdir}/default/%{name}d
 
 # Fix for installing pkgconfig to correct lib64 dir on 64-bit systems.
-%ifarch x86_64 aarch64
+%ifnarch %ix86
 %__mkdir_p %{buildroot}%{_libdir}/pkgconfig
 mv %{buildroot}/usr/lib/pkgconfig/sndio.pc %{buildroot}%{_libdir}/pkgconfig
 %endif
-
-%pre
-%_pre_useradd %{name}d /dev/null /bin/false
-/usr/bin/usermod -a -G audio %{name}d
 
 %post
 %_post_service	%{name}d
 
 %preun
 %preun_service	%{name}d
-
-%postun
-/usr/bin/usermod -G %{name}d %{name}d
-%_postun_userdel %{name}d
 
 %files
 %{_bindir}/aucat
