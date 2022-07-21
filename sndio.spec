@@ -1,10 +1,10 @@
 %define		libname %mklibname sndio %{major}
 %define		devel	%mklibname sndio -d
-%define		major	7.1
+%define		major	7.2
 
 Name:		sndio
-Version:	1.7.0
-Release:	2
+Version:	1.9.0
+Release:	1
 Summary:	A sound library
 Group:		Sound/Utilities
 
@@ -53,9 +53,15 @@ Here are the development files for %{name}
 %__install -Dm 755 contrib/%{name}d.service %{buildroot}%{_unitdir}/%{name}d.service
 %__install -Dm 644 contrib/default.%{name}d %{buildroot}%{_sysconfdir}/default/%{name}d
 
+# Fix for installing pkgconfig to correct lib64 dir on 64-bit systems.
+%ifarch x86_64 aarch64
+%__mkdir_p %{buildroot}%{_libdir}/pkgconfig
+mv %{buildroot}/usr/lib/pkgconfig/sndio.pc %{buildroot}%{_libdir}/pkgconfig
+%endif
+
 %pre
 %_pre_useradd %{name}d /dev/null /bin/false
-/usr/sbin/usermod -a -G audio %{name}d
+/usr/bin/usermod -a -G audio %{name}d
 
 %post
 %_post_service	%{name}d
@@ -64,7 +70,7 @@ Here are the development files for %{name}
 %preun_service	%{name}d
 
 %postun
-/usr/sbin/usermod -G %{name}d %{name}d
+/usr/bin/usermod -G %{name}d %{name}d
 %_postun_userdel %{name}d
 
 %files
@@ -77,9 +83,9 @@ Here are the development files for %{name}
 %{_sysconfdir}/default/%{name}d
 
 %files -n	%{libname}
-%{_libdir}/libsndio.so.%{major}
+%{_libdir}/libsndio.so.7*
 
 %files -n	%{devel}
 %{_libdir}/libsndio.so
+%{_libdir}/pkgconfig/sndio.pc
 %{_includedir}/sndio.h
-
