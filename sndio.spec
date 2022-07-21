@@ -1,6 +1,6 @@
 %define		libname %mklibname sndio %{major}
 %define		devel	%mklibname sndio -d
-%define		major	7.1
+%define		major	7.2
 
 Name:		sndio
 Version:	1.9.0
