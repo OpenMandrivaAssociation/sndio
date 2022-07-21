@@ -3,8 +3,8 @@
 %define		major	7.1
 
 Name:		sndio
-Version:	1.7.0
-Release:	2
+Version:	1.9.0
+Release:	1
 Summary:	A sound library
 Group:		Sound/Utilities
 
@@ -55,7 +55,7 @@ Here are the development files for %{name}
 
 %pre
 %_pre_useradd %{name}d /dev/null /bin/false
-/usr/sbin/usermod -a -G audio %{name}d
+/usr/bin/usermod -a -G audio %{name}d
 
 %post
 %_post_service	%{name}d
@@ -64,7 +64,7 @@ Here are the development files for %{name}
 %preun_service	%{name}d
 
 %postun
-/usr/sbin/usermod -G %{name}d %{name}d
+/usr/bin/usermod -G %{name}d %{name}d
 %_postun_userdel %{name}d
 
 %files
