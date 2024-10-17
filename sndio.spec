@@ -9,7 +9,7 @@ Summary:	A sound library
 Group:		Sound/Utilities
 
 License:	ISC
-URL:		http://www.sndio.org
+URL:		https://www.sndio.org
 Source0:	http://www.sndio.org/%{name}-%{version}.tar.gz
 
 BuildRequires:	pkgconfig(alsa)
