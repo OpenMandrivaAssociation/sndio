@@ -12,6 +12,11 @@ License:	ISC
 URL:		https://www.sndio.org
 Source0:	http://www.sndio.org/%{name}-%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(libbsd)
 Requires(post):	rpm-helper
